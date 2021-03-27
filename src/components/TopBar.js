@@ -1,29 +1,39 @@
 import React from 'react';
-import { Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import SimpleMenu from './SimpleMenu';
 
-const useStyle = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    alignItems: 'center',
-    margin: theme.spacing(2),
-  },
-  title: {
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
     flexGrow: 1,
   },
-  btn: {
-    color: '#fff',
-    background: 'hsla(0,0%,100%,.24)',
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
   },
 }));
 
-export default function TopBar({ setOpen }) {
-  const classes = useStyle();
+export default function ButtonAppBar() {
+  const classes = useStyles();
+
   return (
     <div className={classes.root}>
-      <Typography className={classes.title}>Daily Trello</Typography>
+      <AppBar position="static">
+        <Toolbar>
+          <SimpleMenu />
+          <Typography variant="h6" className={classes.title}>
+            App Name
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
     </div>
   );
 }

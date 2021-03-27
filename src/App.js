@@ -11,7 +11,7 @@ import TopBar from './components/TopBar';
 const useStyle = makeStyles((theme) => ({
   root: {
     minHeight: '100vh',
-    background: 'green',
+    background: 'lightBlue',
     width: '100%',
     overflowY: 'auto',
   },
