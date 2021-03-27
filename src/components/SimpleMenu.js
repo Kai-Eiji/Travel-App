@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleMenu() {
   const classes = useStyles();
-  
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -46,7 +46,8 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>Plan</MenuItem>
+        <MenuItem onClick={handleClose}>View</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
