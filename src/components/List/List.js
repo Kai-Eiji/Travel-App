@@ -40,7 +40,7 @@ export default function List({ list, index }) {
               )}
             </Droppable>
 
-            <InputContainer listId={list.id} type="card" />
+            <InputContainer listId={list.id} listType={list.title} type="card" />
           </Paper>
         </div>
       )}

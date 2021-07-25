@@ -17,6 +17,7 @@ const useStyle = makeStyles((theme) => ({
   },
   listContainer: {
     display: 'flex',
+    flexWrap: 'wrap',
   },
 }));
 
@@ -26,13 +27,126 @@ export default function App() {
 
   const [backgroundUrl, setBackgroundUrl] = useState('');
   const classes = useStyle();
-  const addMoreCard = (title, listId) => {
+
+  const addHotelCard = (title, listId, hotel, offers) => {
     console.log(title, listId);
 
     const newCardId = uuid();
     const newCard = {
       id: newCardId,
-      title,
+      title: title,
+      type: "hotel",
+      hotel_data: hotel,
+      offers: offers
+    };
+
+    const list = data.lists[listId];
+    list.cards = [...list.cards, newCard];
+
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [listId]: list,
+      },
+    };
+    setData(newState);
+  };
+
+  const deleteHotelCard = (listId, hotelId) => {
+    const list = data.lists[listId];
+    const hotels = Array.from(list.cards);
+    let deleteIdx = -1;
+
+    deleteIdx = hotels.findIndex(hotel => hotel.id == hotelId)
+    if (deleteIdx > -1){
+      hotels.splice(deleteIdx, 1)
+    }
+    list.cards = hotels;
+    
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [listId]: list,
+      },
+    };
+    setData(newState);
+  };
+
+  const addActivityCard = (title, listId, activity) => {
+    console.log(title, listId);
+
+    const newCardId = uuid();
+    const newCard = {
+      id: newCardId,
+      title: title,
+      type: "activity",
+      activity_data: activity,
+    };
+
+    const list = data.lists[listId];
+    list.cards = [...list.cards, newCard];
+
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [listId]: list,
+      },
+    };
+    setData(newState);
+  };
+
+  const deleteActivityCard = (listId, activityId) => {
+    
+    const list = data.lists[listId];
+    const activity = Array.from(list.cards);
+    let deleteIdx = -1;
+
+    deleteIdx = activity.findIndex(activity => activity.id == activityId)
+    if (deleteIdx > -1){
+      activity.splice(deleteIdx, 1)
+    }
+    list.cards = activity;
+
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [listId]: list,
+      },
+    };
+    setData(newState);
+  };
+
+  const deletePlanCard = (listId, planId) => {
+    
+    const list = data.lists[listId];
+    const plan = Array.from(list.cards);
+    let deleteIdx = -1;
+
+    deleteIdx = plan.findIndex(plan => plan.id == planId)
+    if (deleteIdx > -1){
+      plan.splice(deleteIdx, 1)
+    }
+    list.cards = plan;
+
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [listId]: list,
+      },
+    };
+    setData(newState);
+  };
+
+  const addPlanCard = (listId, planText) => {
+    const newCardId = uuid();
+    const newCard = {
+      id: newCardId,
+      title: planText,
     };
 
     const list = data.lists[listId];
@@ -127,7 +241,7 @@ export default function App() {
   };
 
   return (
-    <StoreApi.Provider value={{ addMoreCard, addMoreList, updateListTitle }}>
+    <StoreApi.Provider value={{ addHotelCard, deleteHotelCard, addActivityCard, deleteActivityCard, deletePlanCard, addPlanCard, addMoreList, updateListTitle }}>
       <div
         className={classes.root}
         style={{

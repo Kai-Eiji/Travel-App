@@ -13,14 +13,23 @@ const stays = [
   {
     id: 'card-4',
     title: 'HOTEL 1',
+    type: 'hotel',
+    hotel_data: {hotelId: 123 },
+    offers: null,
   },
   {
     id: 'card-5',
     title: 'HOTEL 2',
+    type: 'hotel',
+    hotel_data: {hotelId: 123 },
+    offers: null,
   },
   {
     id: 'card-6',
     title: 'HOTEL 3',
+    type: 'hotel',
+    hotel_data: {hotelId: 123 },
+    offers: null,
   },
 ];
 
@@ -28,14 +37,20 @@ const activities = [
   {
     id: 'card-7',
     title: 'ACTIVITY 1',
+    type: 'activity',
+    activity_data: {},
   },
   {
     id: 'card-8',
     title: 'ACTIVITY 2',
+    type: 'activity',
+    activity_data: {},
   },
   {
     id: 'card-9',
     title: 'ACTIVITY 3',
+    type: 'activity',
+    activity_data: {},
   },
 ];
 
