@@ -48,13 +48,15 @@ export default function Asynchronous({listId}) {
 
    const citySelected = (option, value) => {
      if(option.name === value.name ){
-      console.log("value", value.name)
-      console.log("option", option.name)
+        console.log("value", value.name)
+        console.log("option", option.name)
         let city_code = option.address.cityCode;
         setSelectedCity(city_code);
         return true;
      }
      else{
+         console.log("value", value.name)
+         console.log("option", option.name)
          return false;
      }
    };
